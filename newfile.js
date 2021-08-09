@@ -1,28 +1,22 @@
 function myfunction() {
-  var date = new Date();
-  d = date.getDate();
-  y = date.getFullYear();
-  m = date.getMonth();
-  var firstDay=0;
- 
+  let curr = new Date();
+  let first = curr.getDate() - curr.getDay();
+  console.log(first);
+  let thursday;
   
-  if (1 > d || d < 11) {
-     firstDay = new Date(y, m, 10).toDateString();
-  }
-  else if(11>d || d<21){
-     var firstDay = new Date(y, m,20).toDateString();
-    }
-  else{
-    lastday=new Date(y, m+1, 0).getDate();
-    console.log(lastday);
-    var firstDay = new Date(y, m,lastday).toDateString();
-   }
-
-  
-  console.log(y);
+  let n=curr.getDate();
+  console.log("current" + n);
+  let m = new Date(curr.setDate(first + 4)).getDate();
+  console.log("this week thusrday" + m);
+  console.log(n );
   console.log(m);
-  console.log(d);
+  if (n <= m) {
+    thursday = new Date(curr.setDate(first + 4));
+  } 
+  else if (n>  m) {
+    thursday = new Date(curr.setDate(first + 11));
+  }
 
-  return firstDay;
+  return thursday;
 }
 console.log(myfunction());

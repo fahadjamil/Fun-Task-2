@@ -1,8 +1,24 @@
 function myfunction() {
   let curr = new Date; 
   let first = curr.getDate() - curr.getDay(); 
-  let thursday = new Date(curr.setDate(first+4));
-  let friday = new Date(curr.setDate(first+5));
+  let thursday=0;
+  let friday=0;
+  let n=curr.getDate();
+  let m = new Date(curr.setDate(first + 4)).getDate();
+  let p = new Date(curr.setDate(first + 5)).getDate();
+  if (n <= m) {
+    thursday = new Date(curr.setDate(first + 4));
+  } 
+  else {
+    thursday = new Date(curr.setDate(first + 11));
+  }
+  if (n < p) {
+     friday = new Date(curr.setDate(first+5));
+  } 
+  else {
+    friday = new Date(curr.setDate(first+12));
+  }
+ 
 
   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   var departure_day = days[friday.getDay()];
@@ -39,7 +55,7 @@ function myfunction() {
     var ShipDeadline = new Date(y, m,lastday+1);
    }
    var sdeparture_day = days[ShipDeparture.getDay()];
-  var  sdeadline_day= days[thursday.getDay()];
+  var  sdeadline_day= days[ShipDeadline.getDay()];
   var fmonth = ShipDeparture.getUTCMonth() + 1;
   var fday = ShipDeparture.getUTCDate();
   var fyear = ShipDeparture.getUTCFullYear();
